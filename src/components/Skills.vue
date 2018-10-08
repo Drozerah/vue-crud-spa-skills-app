@@ -10,7 +10,7 @@
          {{ 'Alert : '+ showAlert }} 
       </div>
       <button @click="toggleAlert">ToggleAlert</button>
-      <div v-bind:class="borderObject"> {{ borderObject.orangeBorder ? 'Orange border' : 'Purple border' }} </div>
+      <div v-bind:class="borderObject" v-bind:style="{ backgroundColor: bgColor}"> {{ borderObject.orangeBorder ? 'Orange border' : 'Purple border' }} </div>
       <button @click="toggleBorder">ToggleBorder</button>
 
     </div>
@@ -31,8 +31,8 @@ export default {
       borderObject: {
         orangeBorder: true,
         purpleBorder: true
-        // More classes here if you want..
-      }
+      },
+      bgColor: '#343436',
     }
   },
   methods: {
