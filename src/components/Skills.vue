@@ -1,19 +1,17 @@
 <template>
   <div class="skills">
-    <div>{{ name }}</div> <br>
-    <div>
-      <!-- Add this -->
-      {{ btnState ? 'The button is disabled' : 'The button is active'}}
-    </div>
-    <button v-on:click="changeName" v-bind:disabled="btnState">Change Name</button>
     <div class="holder">
       <ul>
         <li v-for="(data, index) in skills" :key='index'>{{index}}. {{data.skill}}</li>
       </ul>
+
+      <!-- Add this -->
+      <div v-bind:class="{ alert: showAlert, 'info': showClass }">
+         {{ 'Alert : '+ showAlert }} 
+      </div>
+      <button @click="toggleAlert">ToggleAlert</button>
+
     </div>
-    <!-- Add these 2 lines -->
-    <p v-if="skills.length >= 1">You have more than 1 skill</p>
-    <p v-else>You have less than or equal to 1 skill</p>
   </div>
 </template>
 
@@ -22,12 +20,19 @@ export default {
   name: 'Skills',
   data() {
     return {
-      name: 'Vue Interpolation',
-      btnState: true,
       skills: [
-        { "skill": "Vue.js" },
-        { "skill": "Frontend Developer" }
-      ]
+          { "skill": "Vue.js" },
+          { "skill": "Frontend Developer" }
+      ],
+      showAlert: false,
+      showClass: true
+    }
+  },
+  methods: {
+    toggleAlert() {
+
+      this.showAlert = !this.showAlert
+
     }
   }
 }
@@ -52,5 +57,21 @@ a {
 .skills{
   background-color: #333333;
   padding: 20px;
+}
+
+.info{
+  padding: 15px;
+  color:white;
+  background-color: #252526;
+}
+
+.alert {
+  background-color: yellow;
+  color:black;
+
+}
+
+button {
+  margin-top: 20px;
 }
 </style>
