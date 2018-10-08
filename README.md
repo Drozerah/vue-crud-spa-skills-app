@@ -6,7 +6,7 @@
 
 - [x] Installing Vue
 - [X] Vue Components
-- [ ] Templating
+- [ ] Templating => https://youtu.be/78tNYZUS-ps?t=924
 - [ ] Styling
 - [ ] Forms
 - [ ] Animation
