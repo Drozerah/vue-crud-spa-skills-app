@@ -1,4 +1,17 @@
-# vue-2-to-do-app
+# vue-2-spa-app
+
+> CRUD Single Page Application with Vue.js
+
+### Map
+
+- [x] Installing Vue
+- [ ] Vue Components
+- [ ] Templating
+- [ ] Styling
+- [ ] Forms
+- [ ] Animation
+- [ ] Routing
+
 
 ## Project setup
 ```
