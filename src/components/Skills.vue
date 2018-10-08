@@ -1,6 +1,11 @@
 <template>
   <div class="skills">
-    {{name}}
+    <div>{{ name }}</div> <br>
+    <div>
+      <!-- Add this -->
+      {{ btnState ? 'The button is disabled' : 'The button is active'}}
+    </div>
+    <button v-on:click="changeName" v-bind:disabled="btnState">Change Name</button>
   </div>
 </template>
 
@@ -9,7 +14,8 @@ export default {
   name: 'Skills',
   data() {
     return {
-      name: 'Vue Interpolation'
+      name: 'Vue Interpolation',
+      btnState: true
     }
   }
 }
