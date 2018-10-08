@@ -5,7 +5,7 @@
 ### Map
 
 - [x] Installing Vue
-- [ ] Vue Components
+- [X] Vue Components
 - [ ] Templating
 - [ ] Styling
 - [ ] Forms
