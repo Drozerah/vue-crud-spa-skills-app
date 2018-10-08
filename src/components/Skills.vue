@@ -49,4 +49,8 @@ li {
 a {
   color: #42b983;
 }
+.skills{
+  background-color: #333333;
+  padding: 20px;
+}
 </style>
