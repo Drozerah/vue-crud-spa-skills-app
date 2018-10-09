@@ -16,16 +16,21 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #adadad;
-  margin-top: 60px;
-}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
 body {
-  background-color: #1e1e1e;
+  background-color: #EEEEEE;
+  font-family: 'Montserrat', sans-serif;
+  display: grid;
+  grid-template-rows: auto;
+  justify-items: center;
+  align-items: center;
+}
+body, html {
+  margin: 0;
+  height: 100%;
+}
+#app {
+    width: 50%;
 }
 </style>

@@ -1,18 +1,10 @@
 <template>
-  <div class="skills">
+  <div class="container">
     <div class="holder">
       <ul>
-        <li v-for="(data, index) in skills" :key='index'>{{index}}. {{data.skill}}</li>
+        <li v-for="(data, index) in skills" :key='index'>{{data.skill}}</li>
       </ul>
-
-      <!-- Add this -->
-      <div v-bind:class="{ alert: showAlert, 'info': showClass }">
-         {{ 'Alert : '+ showAlert }} 
-      </div>
-      <button @click="toggleAlert">ToggleAlert</button>
-      <div v-bind:class="borderObject" v-bind:style="{ backgroundColor: bgColor}"> {{ borderObject.orangeBorder ? 'Orange border' : 'Purple border' }} </div>
-      <button @click="toggleBorder">ToggleBorder</button>
-
+      <p>These are the skills that you possess.</p>
     </div>
   </div>
 </template>
@@ -48,52 +40,34 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.skills{
-  background-color: #333333;
-  padding: 20px;
-}
 
-.info{
-  padding: 15px;
-  color:white;
-  background-color: #252526;
-}
+  .holder {
+    background: #fff;
+  }
 
-.alert {
-  background-color: yellow;
-  color:black;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  ul li {
+    padding: 20px;
+    font-size: 1.3em;
+    background-color: #E0EDF4;
+    border-left: 5px solid #3EB3F6;
+    margin-bottom: 2px;
+    color: #3E5252;
+  }
 
-}
+  p {
+    text-align:center;
+    padding: 30px 0;
+    color: gray;
+  }
 
+  .container {
+    box-shadow: 0px 0px 40px lightgray;
+  }
 
-.purpleBorder{
-  padding: 15px;
-  color:white;
-  background-color: #252526;
-  border: 1px solid purple;
-}
-.orangeBorder{
-  border: 1px solid orange;
-  color:white;
-
-}
-
-button {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
 </style>
