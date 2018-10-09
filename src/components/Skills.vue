@@ -3,8 +3,7 @@
 
     <form @submit.prevent="checkForm">
       <p class="alert-validation" v-if="validation.isError">{{ validation.message }}</p>
-      <input type="text" placeholder="Enter a skill you have.." v-model="skill" v-on:input="InputChangeListener">
-      <!-- <p class="alert" v-if="errors.has('skill')">{{ errors.first('skill') }}</p> -->
+      <input type="text" placeholder="Enter a skill you have.." v-model="skill" @input="InputChangeListener" @blur="InputLoseFocusListener">
     </form>
 
     <div class="holder">
@@ -35,12 +34,12 @@ export default {
   methods: {
     checkForm() {
           let input = this.skill.length
-          if (input == '') {
+          if (input == 0) {
             // input is empty
             this.validation.message = "This field is required"
             this.validation.isError = true
-          } else if ( input !== '' && input < 5 ){
-            // input < 5
+          } else if ( input !== 0 && input < 5 ){
+            // input not empty and < 5
             this.validation.message = "This field must contain at least 5"
             this.validation.isError = true
           } else {
@@ -50,17 +49,24 @@ export default {
     },
     InputChangeListener() {
       let input = this.skill.length
-      if (input !== '' && input >= 5 ) {
+      if (input !== 0 && input >= 5 ) {
          this.validation.isError = false
          this.validation.message = ''
       }
+    },
+    InputLoseFocusListener(){
+      let input = this.skill.length
+      if (input == 0) {
+         this.validation.isError = false
+         this.validation.message = ''
+      }
+      console.log('mouseLeave');
     },
     addSkill(){
       // happy path     
       this.skills.push({skill: this.skill});
       this.validation.isError = false
       this.skill = ''
-      console.log("happy !");
     }
   },
   computed: {
@@ -106,6 +112,7 @@ export default {
     text-align:center;
     padding: 30px 0;
     color: gray;
+    margin: 0px;
   }
 
   .container {
