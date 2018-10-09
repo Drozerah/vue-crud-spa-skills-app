@@ -40,7 +40,7 @@ export default {
             this.validation.isError = true
           } else if ( input !== 0 && input < 5 ){
             // input not empty and < 5
-            this.validation.message = "This field must contain at least 5"
+            this.validation.message = "This field must be at least 5 characters"
             this.validation.isError = true
           } else {
             // add skill
