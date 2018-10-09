@@ -9,7 +9,7 @@
       <ul>
         <li v-for="(data, index) in skills" :key='index'>{{data.skill}}</li>
       </ul>
-      <p>These are the {{ skillsLength() }} skills that you possess.</p>
+        <p>{{ skillsMessage }}</p>
     </div>
   </div>
 </template>
@@ -19,9 +19,7 @@ export default {
   name: 'Skills',
   data() {
     return {
-      checked: false,   
-      skill: '',
-      test:'?',
+      checked: false,
       skills: [
           { "skill": "Vue.js" },
           { "skill": "Frontend Developer" }
@@ -32,9 +30,20 @@ export default {
     addSkill(){
         this.skills.push({skill: this.skill});
         this.skill = '';
-    },
-    skillsLength(){
-        return this.skills.length
+    }
+  },
+  computed: {
+    skillsMessage(){
+      // get skills number from data object
+      let skillNumber = this.skills.length
+      if (skillNumber < 1) {
+        return `You have no skills yet !`  
+      } else if (skillNumber == 1) {
+        return `This is the skill that you possess.`
+      } else {
+        return `These are the ${skillNumber} skills that you possess.`
+      }
+
     }
   }
 }
