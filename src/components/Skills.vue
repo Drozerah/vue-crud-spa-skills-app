@@ -27,7 +27,8 @@ export default {
       ],
       validation: {
         isError: false,
-        message: ''
+        message: '',
+        min: 3
       }
     }
   },
@@ -36,11 +37,11 @@ export default {
           let input = this.skill.length
           if (input == 0) {
             // input is empty
-            this.validation.message = "This field is required"
+            this.validation.message = 'This field is required'
             this.validation.isError = true
-          } else if ( input !== 0 && input < 5 ){
-            // input not empty and < 5
-            this.validation.message = "This field must be at least 5 characters"
+          } else if ( input !== 0 && input < this.validation.min ){
+            // input not empty and < this.validation.min
+            this.validation.message = 'This field must be at least 3 characters'
             this.validation.isError = true
           } else {
             // add skill
@@ -49,18 +50,17 @@ export default {
     },
     InputChangeListener() {
       let input = this.skill.length
-      if (input !== 0 && input >= 5 ) {
+      if (input !== 0 && input >= this.validation.min ) {
          this.validation.isError = false
          this.validation.message = ''
       }
     },
-    InputLoseFocusListener(){
+    InputLoseFocusListener() {
       let input = this.skill.length
       if (input == 0) {
          this.validation.isError = false
          this.validation.message = ''
       }
-      console.log('mouseLeave');
     },
     addSkill(){
       // happy path     
