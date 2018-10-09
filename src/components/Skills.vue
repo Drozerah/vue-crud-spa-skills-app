@@ -1,9 +1,10 @@
 <template>
   <div class="container">
 
-    <form @submit.prevent="addSkill">
-      <input type="text" placeholder="Enter a skill you have.." v-model="skill" v-validate="'required|min:5'" name="skill">
-      <p class="alert" v-if="errors.has('skill')">{{ errors.first('skill') }}</p>
+    <form @submit.prevent="checkForm">
+      <p class="alert-validation" v-if="validation.isError">{{ validation.message }}</p>
+      <input type="text" placeholder="Enter a skill you have.." v-model="skill" v-on:input="InputChangeListener">
+      <!-- <p class="alert" v-if="errors.has('skill')">{{ errors.first('skill') }}</p> -->
     </form>
 
     <div class="holder">
@@ -24,20 +25,43 @@ export default {
       skills: [
           { "skill": "Vue.js" },
           { "skill": "Frontend Developer" }
-      ]
+      ],
+      validation: {
+        isError: false,
+        message: ''
+      }
     }
   },
   methods: {
-  addSkill() {
-    this.$validator.validateAll().then((result) => {
-      if (result) {
-        this.skills.push({skill: this.skill});
-        this.skill = '';
-      } else {
-        //console.log('Not valid');
+    checkForm() {
+          let input = this.skill.length
+          if (input == '') {
+            // input is empty
+            this.validation.message = "This field is required"
+            this.validation.isError = true
+          } else if ( input !== '' && input < 5 ){
+            // input < 5
+            this.validation.message = "This field must contain at least 5"
+            this.validation.isError = true
+          } else {
+            // add skill
+            return this.addSkill()
+          }
+    },
+    InputChangeListener() {
+      let input = this.skill.length
+      if (input !== '' && input >= 5 ) {
+         this.validation.isError = false
+         this.validation.message = ''
       }
-    })
-  }
+    },
+    addSkill(){
+      // happy path     
+      this.skills.push({skill: this.skill});
+      this.validation.isError = false
+      this.skill = ''
+      console.log("happy !");
+    }
   },
   computed: {
     skillsMessage(){
@@ -97,11 +121,15 @@ export default {
     color: #687F7F;
   }
 
-  .alert {
-    background: #fdf2ce;
-    font-weight: bold;
-    padding: 5px;
+ .alert-validation{
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
     margin: 0px;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: bold;
   }
 
 </style>
