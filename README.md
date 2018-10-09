@@ -8,7 +8,7 @@
 - [x] Vue Components
 - [x] Templating => https://youtu.be/78tNYZUS-ps?t=924
 - [x] Styling => https://youtu.be/78tNYZUS-ps?t=1528
-- [ ] Forms
+- [x] Forms => https://youtu.be/78tNYZUS-ps?t=2249
 - [ ] Animation
 - [ ] Routing
 
