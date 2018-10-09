@@ -19,7 +19,7 @@ export default {
   name: 'Skills',
   data() {
     return {
-      checked: false,
+      skill: '',
       skills: [
           { "skill": "Vue.js" },
           { "skill": "Frontend Developer" }
@@ -37,7 +37,7 @@ export default {
       // get skills number from data object
       let skillNumber = this.skills.length
       if (skillNumber < 1) {
-        return `You have no skills yet !`  
+        return `You have no skill yet !`  
       } else if (skillNumber == 1) {
         return `This is the skill that you possess.`
       } else {
