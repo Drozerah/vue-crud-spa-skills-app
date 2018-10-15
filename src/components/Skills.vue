@@ -96,9 +96,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  /* import animate.css library */
-  @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
-
   .holder {
     background: #fff;
   }
@@ -123,10 +120,6 @@ export default {
     padding: 30px 0;
     color: gray;
     margin: 0px;
-  }
-
-  .container {
-    box-shadow: 0px 0px 40px lightgray;
   }
 
   input {
