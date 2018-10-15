@@ -14,7 +14,10 @@
     <div class="holder">
       <ul>
         <transition-group name="list" enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown"> 
-          <li v-for="(data, index) in skills" :key='index'>{{data.skill}}</li>
+          <li v-for="(data, index) in skills" :key='index'>
+            {{data.skill}}
+            <i class="material-icons" v-on:click="removeSkill(index)" title="Remove this skill">remove_circle_outline</i>
+          </li>
         </transition-group>
       </ul>
         <p>{{ skillsMessage }}</p>
@@ -74,6 +77,10 @@ export default {
       this.skills.push({skill: this.skill});
       this.validation.isError = false
       this.skill = ''
+    },
+    removeSkill(id) {
+      // remove selected skill
+        this.skills.splice(id, 1);
     }
   },
   computed: {
@@ -95,6 +102,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+/* import Google icon */
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
   .holder {
     background: #fff;
@@ -113,6 +122,15 @@ export default {
     border-left: 5px solid #3EB3F6;
     margin-bottom: 2px;
     color: #3E5252;
+  }
+
+  li i {
+    float: right;
+  }
+
+  li i:hover{
+    color: #3EB3F6;
+    cursor: pointer;
   }
 
   p {
