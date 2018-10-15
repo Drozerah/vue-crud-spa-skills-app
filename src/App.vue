@@ -5,16 +5,19 @@
         <router-link to="/about">About</router-link>
       </nav>
       <router-view/>
+      <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Skills from './components/Skills.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'app',
   components: {
-    Skills
+    Skills,
+    Footer
   }
 }
 </script>
@@ -51,6 +54,10 @@ body, html {
     width: 50%;
 }
 
+nav {
+  margin-bottom: 50px;
+}
+
 nav a {
   padding: 10px;
   text-decoration: none;
@@ -67,4 +74,5 @@ nav a:hover{
 .router-link-exact-active{
   border-bottom: 3px solid #333;
 }
+
 </style>
