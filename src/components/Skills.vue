@@ -1,11 +1,14 @@
 <template>
   <div class="container">
-
+    <!-- form  -->
     <form @submit.prevent="checkForm">
-      <p class="alert-validation" v-if="validation.isError">{{ validation.message }}</p>
-      <input type="text" placeholder="Enter a skill you have.." v-model="skill" @input="InputChangeListener" @blur="InputLoseFocusListener">
+      <!-- alert message -->
+      <transition name="alert-in">
+        <p class="alert-validation" v-if="validation.isError">{{ validation.message }}</p>
+      </transition>
+      <input type="text" placeholder="Enter a skill you have.." v-model="skill" @input="InputChangeListener" @blur="InputLoseFocusListener">    
     </form>
-
+    <!-- content -->
     <div class="holder">
       <ul>
         <li v-for="(data, index) in skills" :key='index'>{{data.skill}}</li>
@@ -138,5 +141,25 @@ export default {
     line-height: 12px;
     font-weight: bold;
   }
+
+/* Error message animation */
+
+.alert-in-enter-active {
+  animation: bounce-in .5s;
+}
+.alert-in-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 </style>
