@@ -2,10 +2,18 @@
   <div class="container">
     <!-- form  -->
     <form @submit.prevent="checkForm">
-      <!-- alert message -->
+
+      <!-- alert message custom css -->
+      <!-- Test
       <transition name="alert-in">
         <p class="alert-validation" v-if="validation.isError">{{ validation.message }}</p>
       </transition>
+      -->
+      <!-- alert message with animation library -->
+      <transition name="alert-in" enter-active-class="animated flipInX" leave-active-class="animated flipOutX">
+        <p class="alert-validation" v-if="validation.isError">{{ validation.message }}</p>
+      </transition>
+
       <input type="text" placeholder="Enter a skill you have.." v-model="skill" @input="InputChangeListener" @blur="InputLoseFocusListener">    
     </form>
     <!-- content -->
@@ -92,6 +100,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+  /* import animate.css library */
+  @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+
   .holder {
     background: #fff;
   }
@@ -144,7 +155,7 @@ export default {
 
 /* Error message animation */
 
-.alert-in-enter-active {
+/* .alert-in-enter-active {
   animation: bounce-in .5s;
 }
 .alert-in-leave-active {
@@ -161,5 +172,6 @@ export default {
     transform: scale(1);
   }
 }
+ */
 
 </style>
