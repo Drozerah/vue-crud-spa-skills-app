@@ -3,12 +3,6 @@
     <!-- form  -->
     <form @submit.prevent="checkForm">
 
-      <!-- alert message custom css -->
-      <!-- Test
-      <transition name="alert-in">
-        <p class="alert-validation" v-if="validation.isError">{{ validation.message }}</p>
-      </transition>
-      -->
       <!-- alert message with animation library -->
       <transition name="alert-in" enter-active-class="animated flipInX" leave-active-class="animated flipOutX">
         <p class="alert-validation" v-if="validation.isError">{{ validation.message }}</p>
@@ -154,26 +148,5 @@ export default {
     line-height: 12px;
     font-weight: bold;
   }
-
-/* Error message animation */
-
-/* .alert-in-enter-active {
-  animation: bounce-in .5s;
-}
-.alert-in-leave-active {
-  animation: bounce-in .5s reverse;
-}
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
- */
-
+  
 </style>
