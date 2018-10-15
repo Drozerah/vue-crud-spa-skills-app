@@ -10,7 +10,7 @@
 - [x] Styling => https://youtu.be/78tNYZUS-ps?t=1528
 - [x] Forms => https://youtu.be/78tNYZUS-ps?t=2249
 - [x] Animation => https://youtu.be/78tNYZUS-ps?t=2864
-- [ ] Routing
+- [x] Routing => https://youtu.be/78tNYZUS-ps?t=3318
 
 
 ## Project setup
