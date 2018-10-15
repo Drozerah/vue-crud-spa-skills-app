@@ -1,7 +1,7 @@
 <template>
 
     <div class="about container">
-        <h1>This is an about page</h1>
+        <h1>{{ aboutTitle }}</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ali...</p>
     </div>
 
@@ -9,7 +9,12 @@
 
 <script>
 export default {
-  name: 'About'
+  name: 'About',
+  data(){
+      return{
+          aboutTitle: 'This is an about page'
+      }
+  }
 }
 </script>
 
