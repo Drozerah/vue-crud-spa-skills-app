@@ -16,7 +16,7 @@
         <transition-group name="list" enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown"> 
           <li v-for="(data, index) in skills" :key='index'>
             {{data.skill}}
-            <i class="material-icons" v-on:click="removeSkill(index)" title="Remove this skill">remove_circle_outline</i>
+            <i class="material-icons" v-on:click="removeSkill(index)" :title="'Remove ' + data.skill + ' skill'">remove_circle_outline</i>
           </li>
         </transition-group>
       </ul>
@@ -80,7 +80,7 @@ export default {
     },
     removeSkill(id) {
       // remove selected skill
-        this.skills.splice(id, 1);
+        this.skills.splice(id, 1)
     }
   },
   computed: {
