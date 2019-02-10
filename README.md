@@ -11,6 +11,8 @@
 - [x] Forms => https://youtu.be/78tNYZUS-ps?t=2249
 - [x] Animation => https://youtu.be/78tNYZUS-ps?t=2864
 - [x] Routing => https://youtu.be/78tNYZUS-ps?t=3318
+- [x] firebase => npm install [firebase](https://www.npmjs.com/package/firebase)
+- [x] vuefire => npm install [vuefire](https://www.npmjs.com/package/vuefire)
 
 
 ## Project setup
