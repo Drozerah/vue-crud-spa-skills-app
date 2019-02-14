@@ -1,6 +1,6 @@
-# vue-2-spa-app
+# vue-crud-spa-app
 
-> CRUD Single Page Application with Vue.js
+> CRUD Single Page Application with Vue.js and Firebase Realtime Database - FVN stack
 
 ### Map
 
