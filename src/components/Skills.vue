@@ -50,6 +50,7 @@ export default {
   },
   methods: {
     checkForm() {
+          // check current skill
           let input = this.skill.length
           if (input == 0) {
             // input is empty
