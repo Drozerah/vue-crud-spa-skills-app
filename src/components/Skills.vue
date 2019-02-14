@@ -11,30 +11,36 @@
       <input type="text" placeholder="Enter a skill you have.." v-model="skill" @input="InputChangeListener" @blur="InputLoseFocusListener">    
     </form>
     <!-- content -->
-    <div class="holder">
+    <div div class="holder">
       <ul>
-        <transition-group name="list" enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown"> 
-          <li v-for="(data, index) in skills" :key='index'>
-            {{data.skill}}
-            <i class="material-icons" v-on:click="removeSkill(index)" :title="'Remove ' + data.skill + ' skill'">remove_circle_outline</i>
+        <transition-group name="list" enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown">
+          <li v-for="skill of skills" :key="skill['.key']">
+            {{ skill.name }}
+            <i class="material-icons" @click="removeSkill(skill['.key'], skill.name)" title="Remove skill">remove_circle_outline</i>
           </li>
         </transition-group>
       </ul>
-        <p>{{ skillsMessage }}</p>
+    <div>
+      <p>{{ skillsCounterMessage }}</p>
     </div>
+    </div>
+    
   </div>
 </template>
 
 <script>
+
+import { skillRef } from '@/firebase'
+
 export default {
   name: 'Skills',
+  // DB object
+  firebase: {
+    skills: skillRef
+  },
   data() {
     return {
       skill: '',
-      skills: [
-          { "skill": "Vue.js" },
-          { "skill": "Frontend Developer" }
-      ],
       validation: {
         isError: false,
         message: '',
@@ -44,6 +50,7 @@ export default {
   },
   methods: {
     checkForm() {
+          // check current skill
           let input = this.skill.length
           if (input == 0) {
             // input is empty
@@ -73,20 +80,27 @@ export default {
       }
     },
     addSkill(){
-      // happy path     
-      this.skills.push({skill: this.skill});
+      // happy path
+      // submit to firebase 
+      skillRef.push({
+        name: this.skill, 
+        edit: false
+      })
       this.validation.isError = false
       this.skill = ''
+      
     },
-    removeSkill(id) {
-      // remove selected skill
-        this.skills.splice(id, 1)
+    removeSkill(key, skillName){
+      // ask confirmation
+      let response = confirm(`\nYour are about to remove "${skillName}"\n\nPlease confirm OK or Cancel.`)
+      // remove element from DB 
+      if (response == true) return skillRef.child(key).remove() 
     }
   },
   computed: {
-    skillsMessage(){
-      // get skills number from data object
-      let skillNumber = this.skills.length
+    skillsCounterMessage(){
+      // get skills number from DB object
+      let skillNumber = this.skills.length 
       if (skillNumber < 1) {
         return `You have no skill yet !`  
       } else if (skillNumber == 1) {
@@ -94,7 +108,6 @@ export default {
       } else {
         return `These are the ${skillNumber} skills that you possess.`
       }
-
     }
   }
 }
